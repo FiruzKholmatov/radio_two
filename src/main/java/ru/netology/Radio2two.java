@@ -1,58 +1,40 @@
 package ru.netology;
 
 public class Radio2two {
-    public String getName() {
-        return name;
-    }
 
-    private String name = "Orion";
-    private int FmAmount = 10;
+
+    private int fmAmount = 19;
     private int currentFm = 0;
     private int firstFm = 0;
-    private int lastFm = 9;
+    private int lastFm = 19;
     private int minVolume = 0;
     private int maxVolume = 99;
-    private int currentVolume = 0;
+    private int currentVolume;
 
 
     public Radio2two() {
-
     }
 
-    public Radio2two(int currentVolume) {
-        this.currentVolume = currentVolume;
-    }
-
-
-    public Radio2two(String name, int fmAmount) {
-        this.name = name;
-        FmAmount = fmAmount;
+    public Radio2two(int fmAmount) {
+        this.fmAmount = fmAmount;
     }
 
 
-    public Radio2two(String name, int fmAmount, int currentFm, int firstFm, int lastFm) {
-        this.name = name;
-        FmAmount = fmAmount;
-        this.currentFm = currentFm;
-        this.firstFm = firstFm;
-        this.lastFm = lastFm;
-    }
-
-
-    public void setCurrentFm(int CurrentFm) {
-        if (CurrentFm < 0) {
-            return;
+    public void setCurrentFm(int newCurrentFm) {
+        if (currentFm < fmAmount) {
+            this.currentFm = newCurrentFm;
         }
-        if (CurrentFm > getLastFm()) {
-            return;
+        if(currentFm > fmAmount) {
+            this.currentFm = fmAmount;
+
         }
-        this.currentFm = CurrentFm;
+
     }
 
     public void stepForward() {
         int newFm = currentFm + 1;
         setCurrentFm(newFm);
-        if (newFm > 9) {
+        if (newFm > fmAmount) {
             newFm = getFirstFm();
         }
         this.currentFm = newFm;
@@ -62,31 +44,35 @@ public class Radio2two {
     public void stepBackward() {
         int newFm = currentFm - 1;
         setCurrentFm(newFm);
-        if (newFm < 0) {
-            newFm = getLastFm();
+        if(newFm < firstFm){
+           newFm = getLastFm();
         }
         this.currentFm = newFm;
+
+
+
+
     }
 
     // Volume adjust - Range from 0 to 10. Triggers "-" and "+".
     // No action while volume 10 + press "+" or volume 0 + press "-".
 
 
-    public void setCurrentVolume(int currentVolume) {
-        if (currentVolume < 0) {
-            return;
+    public void setCurrentVolume(int newCurrentVolume) {
+        if (currentVolume < getMaxVolume()) {
+            this.currentVolume = newCurrentVolume;
         }
-        if (currentVolume > getMaxVolume()) {
-            return;
+        if (currentVolume > getMinVolume()) {
+            this.currentVolume = newCurrentVolume;
         }
-        this.currentVolume = currentVolume;
+
 
     }
 
     public void increaseVolume() {
         int newVol = currentVolume + 1;
         setCurrentVolume(newVol);
-        if (newVol > 99) {
+        if (newVol > maxVolume) {
             newVol = getMaxVolume();
         }
         this.currentVolume = newVol;
@@ -94,7 +80,7 @@ public class Radio2two {
     }
 
     public void decreaseVolume() {
-        if (currentVolume > 0) {
+        if (currentVolume > minVolume) {
             currentVolume = currentVolume - 1;
         }
         if (currentVolume < 0) {
@@ -103,10 +89,6 @@ public class Radio2two {
 
     }
 
-
-    public int getFmAmount() {
-        return FmAmount;
-    }
 
     public int getCurrentFm() {
         return currentFm;
@@ -135,4 +117,6 @@ public class Radio2two {
     public int getCurrentVolume() {
         return currentVolume;
     }
+
+
 }
