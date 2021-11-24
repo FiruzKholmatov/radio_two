@@ -70,7 +70,10 @@ public class Radio2TwoTest{
 
         int actual = rad.getCurrentFm();
         int expected = 19;
+
+        assertEquals(expected,actual);
     }
+
 
 //    Volume Tests
 //     =========================================================
