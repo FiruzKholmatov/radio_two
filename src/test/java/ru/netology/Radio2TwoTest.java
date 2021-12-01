@@ -8,26 +8,23 @@ public class Radio2TwoTest{
 
 
     @Test
-    public void shouldSetFmInBound() {
-        Radio2two rad = new Radio2two(19);
+    public void shouldSetFmByDefault() {
+        Radio2two rad = new Radio2two();
 
-        rad.setCurrentFm(18);
 
-        int actual = rad.getCurrentFm();
-        int expected = 18;
+        int actual = rad.getFmAmount();
+        int expected = 9;
 
         assertEquals(expected, actual);
 
     }
 
     @Test
-    public void shouldStepForward() {
-        Radio2two rad = new Radio2two(19);
+    public void shouldSetFmByAmount() {
+        Radio2two rad = new Radio2two(20);
 
-        rad.setCurrentFm(18);
-        rad.stepForward();
 
-        int actual = rad.getCurrentFm();
+        int actual = rad.getFmAmount();
         int expected = 19;
 
         assertEquals(expected, actual);
@@ -35,10 +32,24 @@ public class Radio2TwoTest{
     }
 
     @Test
-    public void shouldStepForwardOverBound() {
-        Radio2two rad = new Radio2two(19);
+    public void shouldStepForward() {
+        Radio2two rad = new Radio2two();
 
-        rad.setCurrentFm(20);
+        rad.setCurrentFm(7);
+        rad.stepForward();
+
+        int actual = rad.getCurrentFm();
+        int expected = 8;
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void shouldStepForwardOverBound() {
+        Radio2two rad = new Radio2two();
+
+        rad.setCurrentFm(11);
         rad.stepForward();
 
         int actual = rad.getCurrentFm();
@@ -49,13 +60,13 @@ public class Radio2TwoTest{
 
     @Test
     public void shouldStepBackward() {
-        Radio2two rad = new Radio2two(19);
+        Radio2two rad = new Radio2two();
 
-        rad.setCurrentFm(5);
+
         rad.stepBackward();
 
         int actual = rad.getCurrentFm();
-        int expected = 4;
+        int expected = 9;
 
         assertEquals(expected, actual);
 
@@ -63,13 +74,13 @@ public class Radio2TwoTest{
 
     @Test
     public void shouldStepBackwardUnderBound() {
-        Radio2two rad = new Radio2two(19);
+        Radio2two rad = new Radio2two();
 
         rad.setCurrentFm(0);
         rad.stepBackward();
 
         int actual = rad.getCurrentFm();
-        int expected = 19;
+        int expected = 9;
 
         assertEquals(expected,actual);
     }
