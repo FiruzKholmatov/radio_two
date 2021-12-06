@@ -9,7 +9,7 @@ public class Radio2TwoTest{
 
     @Test
     public void shouldSetFmByDefault() {
-        Radio2two rad = new Radio2two();
+        Radio2two rad = new Radio2two(10);
 
 
         int actual = rad.getFmAmount();
@@ -74,9 +74,9 @@ public class Radio2TwoTest{
 
     @Test
     public void shouldStepBackwardUnderBound() {
-        Radio2two rad = new Radio2two();
+        Radio2two rad = new Radio2two(1);
 
-        rad.setCurrentFm(0);
+
         rad.stepBackward();
 
         int actual = rad.getCurrentFm();

@@ -6,7 +6,7 @@ public class Radio2two {
     private int fmAmount = 10;
     private int currentFm;
     private int firstFm;
-    private int lastFm = getFmAmount();
+    private int lastFm = getFmAmount()-1;
     private int minVolume;
     private int maxVolume = 99;
     private int currentVolume;
@@ -16,7 +16,8 @@ public class Radio2two {
     }
 
     public Radio2two(int fmAmount) {
-        this.fmAmount = fmAmount;
+
+        this.fmAmount = fmAmount-1;
     }
 
 
@@ -86,7 +87,7 @@ public class Radio2two {
     }
 
     public int getFmAmount() {
-        return fmAmount-1;
+        return fmAmount;
     }
 
     public int getCurrentFm() {
