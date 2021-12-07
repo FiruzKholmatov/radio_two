@@ -3,31 +3,31 @@ package ru.netology;
 public class Radio2two {
 
 
+
     private int fmAmount = 10;
+    private int firstFm = 0;
+    private int lastFm = fmAmount - 1;
     private int currentFm;
-    private int firstFm;
-    private int lastFm = getFmAmount()-1;
     private int minVolume;
     private int maxVolume = 99;
     private int currentVolume;
+
+    public Radio2two(int fmAmount) {
+        this.fmAmount = fmAmount;
+    }
 
 
     public Radio2two() {
     }
 
-    public Radio2two(int fmAmount) {
-
-        this.fmAmount = fmAmount-1;
-    }
-
 
 
     public void setCurrentFm(int newCurrentFm) {
-        if (currentFm < fmAmount) {
+        if (currentFm < lastFm) {
             this.currentFm = newCurrentFm;
         }
-        if(currentFm > fmAmount) {
-            this.currentFm = fmAmount;
+        if(currentFm > firstFm) {
+            this.currentFm = currentFm;
 
         }
 
@@ -36,7 +36,7 @@ public class Radio2two {
     public void stepForward() {
         int newFm = currentFm + 1;
         setCurrentFm(newFm);
-        if (newFm > fmAmount) {
+        if (newFm > lastFm) {
             newFm = getFirstFm();
         }
         this.currentFm = newFm;
@@ -46,7 +46,7 @@ public class Radio2two {
     public void stepBackward() {
         int newFm = currentFm - 1;
         setCurrentFm(newFm);
-        newFm = getLastFm();
+        newFm = lastFm;
         this.currentFm = newFm;
 
     }
@@ -86,10 +86,6 @@ public class Radio2two {
 
     }
 
-    public int getFmAmount() {
-        return fmAmount;
-    }
-
     public int getCurrentFm() {
         return currentFm;
     }
@@ -99,25 +95,24 @@ public class Radio2two {
     }
 
 
-    public int getLastFm() {
 
-        return lastFm;
+    public int getFmAmount() {
+        return fmAmount;
     }
+
 
 
     public int getMinVolume() {
         return minVolume;
     }
 
-
     public int getMaxVolume() {
         return maxVolume;
     }
 
 
+
     public int getCurrentVolume() {
         return currentVolume;
     }
-
-
 }
