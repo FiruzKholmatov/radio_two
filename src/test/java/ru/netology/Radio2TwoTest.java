@@ -11,11 +11,13 @@ public class Radio2TwoTest{
 
     @Test
     public void shouldSetFmByDefault() {
-        Radio2two rad = new Radio2two();
+        Radio2two rad = new Radio2two(20);
+
+        rad.setCurrentFm(15);
 
 
-        int actual = rad.getFmAmount();
-        int expected = 10;
+        int actual = rad.getCurrentFm();
+        int expected = 15;
 
         assertEquals(expected, actual);
 

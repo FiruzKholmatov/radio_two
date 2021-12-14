@@ -23,11 +23,11 @@ public class Radio2two {
 
 
     public void setCurrentFm(int newCurrentFm) {
-        if (currentFm < lastFm) {
+        if (currentFm < fmAmount) {
             this.currentFm = newCurrentFm;
         }
         if(currentFm > firstFm) {
-            this.currentFm = currentFm;
+            this.currentFm = newCurrentFm;
 
         }
 
