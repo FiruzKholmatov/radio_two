@@ -96,9 +96,7 @@ public class Radio2two {
 
 
 
-    public int getFmAmount() {
-        return fmAmount;
-    }
+
 
 
 
