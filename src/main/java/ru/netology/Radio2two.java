@@ -2,107 +2,100 @@ package ru.netology;
 
 public class Radio2two {
 
-
-
     private int fmAmount = 10;
-    private int firstFm = 0;
-    private int lastFm = fmAmount - 1;
+    private int firstFm;
+    private int lastFm = getFmAmount();
     private int currentFm;
     private int minVolume;
-    private int maxVolume = 99;
+    private int maxVolume = 100;
     private int currentVolume;
-
-    public Radio2two(int fmAmount) {
-        this.fmAmount = fmAmount;
-    }
 
 
     public Radio2two() {
     }
 
+    public Radio2two(int fmAmount) {
+        this.fmAmount = fmAmount;
+    }
 
-
-    public void setCurrentFm(int newCurrentFm) {
-        if (currentFm < fmAmount) {
-            this.currentFm = newCurrentFm;
+    public void setCurrentFm(int CurrentFm) {
+        if (CurrentFm < 0) {
+            return;
         }
-        if(currentFm > firstFm) {
-            this.currentFm = newCurrentFm;
-
+        if (CurrentFm > getLastFm()) {
+            return;
         }
-
+        this.currentFm = CurrentFm;
     }
 
     public void stepForward() {
         int newFm = currentFm + 1;
         setCurrentFm(newFm);
-        if (newFm > lastFm) {
-            newFm = getFirstFm();
-        }
         this.currentFm = newFm;
     }
-
 
     public void stepBackward() {
         int newFm = currentFm - 1;
         setCurrentFm(newFm);
-        newFm = lastFm;
+        if (newFm < getFirstFm()) {
+            newFm = getFirstFm();
+        }
         this.currentFm = newFm;
 
     }
 
-    // Volume adjust - Range from 0 to 10. Triggers "-" and "+".
-    // No action while volume 10 + press "+" or volume 0 + press "-".
-
-
-    public void setCurrentVolume(int newCurrentVolume) {
-        if (currentVolume < getMaxVolume()) {
-            this.currentVolume = newCurrentVolume;
+    public void setCurrentVolume(int CurrentVolume) {
+        if (CurrentVolume < getMinVolume()) {
+            return;
         }
-        if (currentVolume > getMinVolume()) {
-            this.currentVolume = newCurrentVolume;
+        if (CurrentVolume > getMaxVolume()) {
+            return;
         }
-
-
+        this.currentVolume = CurrentVolume;
     }
 
     public void increaseVolume() {
-        int newVol = currentVolume + 1;
-        setCurrentVolume(newVol);
-        if (newVol > maxVolume) {
-            newVol = getMaxVolume();
+        if (currentVolume < 100) {
+            currentVolume = currentVolume + 1;
         }
-        this.currentVolume = newVol;
-
     }
+
 
     public void decreaseVolume() {
-        if (currentVolume > minVolume) {
+        if (currentVolume > 0) {
             currentVolume = currentVolume - 1;
-        }
-        if (currentVolume < 0) {
+        } else {
             currentVolume = getMinVolume();
         }
-
     }
 
-    public int getCurrentFm() {
-        return currentFm;
+    public int getFmAmount() {
+        return fmAmount - 1;
+    }
+
+    public void setFmAmount(int fmAmount) {
+        this.fmAmount = fmAmount;
     }
 
     public int getFirstFm() {
         return firstFm;
     }
 
+    public int getLastFm() {
+        return getFmAmount();
+    }
 
 
 
-
-
+    public int getCurrentFm() {
+        return currentFm;
+    }
 
     public int getMinVolume() {
         return minVolume;
     }
+
+
 
     public int getMaxVolume() {
         return maxVolume;
