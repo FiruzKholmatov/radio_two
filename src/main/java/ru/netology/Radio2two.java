@@ -75,9 +75,7 @@ public class Radio2two {
         return fmAmount - 1;
     }
 
-    public void setFmAmount(int fmAmount) {
-        this.fmAmount = fmAmount;
-    }
+
 
     public int getFirstFm() {
         return firstFm;
