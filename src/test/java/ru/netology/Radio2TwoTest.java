@@ -4,18 +4,18 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class Radio2TwoTest{
+public class Radio2TwoTest {
 
 
     @Test
     public void shouldSetFmByDefault() {
         Radio2two rad = new Radio2two();
 
-        rad.setFmAmount(9);
+        rad.getFmAmount();
 
 
         int actual = rad.getFmAmount();
-        int expected = 8;
+        int expected = 9;
 
         assertEquals(expected, actual);
 
@@ -23,11 +23,11 @@ public class Radio2TwoTest{
 
     @Test
     public void shouldSetFmByAnyAmount() {
-        Radio2two rad = new Radio2two(35);
+        Radio2two rad = new Radio2two(36);
 
 
         int actual = rad.getFmAmount();
-        int expected = 34;
+        int expected = 35;
 
         assertEquals(expected, actual);
 
@@ -47,8 +47,6 @@ public class Radio2TwoTest{
         assertEquals(expected, actual);
 
     }
-
-
 
 
     @Test
@@ -136,11 +134,11 @@ public class Radio2TwoTest{
         int actual = rad.getCurrentFm();
         int expected = 0;
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
 
-//    Volume Tests
+    //    Volume Tests
 //     =========================================================
     @Test
     public void shouldSetVolumeInBound() {
@@ -236,10 +234,9 @@ public class Radio2TwoTest{
         int actual = rad.getCurrentVolume();
         int expected = 0;
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
     }
-
 
 
 }
